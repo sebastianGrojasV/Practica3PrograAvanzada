@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Gestor de Automóviles</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <main class="container">
+        <h1>Sistema Gestor de Automóviles</h1>
+
+        <section class="panel">
+            <h2>Registro / Edición</h2>
+            <form id="vehicleForm">
+                <input type="hidden" id="vehicleId" />
+                <div class="grid">
+                    <label>Marca <input id="brand" required /></label>
+                    <label>Modelo <input id="model" required /></label>
+                    <label>Año <input id="year" type="number" min="1950" max="2100" required /></label>
+                    <label>Precio <input id="price" type="number" min="0.01" step="0.01" required /></label>
+                    <label>Color <input id="color" required /></label>
+                    <label>Tipo <input id="type" required /></label>
+                    <label>Transmisión <input id="transmission" required /></label>
+                    <label>Kilometraje <input id="mileage" type="number" min="0" required /></label>
+                    <label>Disponible
+                        <select id="isAvailable">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="actions">
+                    <button type="submit" id="submitButton">Guardar</button>
+                    <button type="button" id="cancelEditButton" class="secondary">Cancelar edición</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Vehículos registrados</h2>
+            <div id="message"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+                        <th>Precio</th>
+                        <th>Disponible</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="vehiclesTableBody"></tbody>
+            </table>
+            <article id="detailCard" class="detail-card hidden"></article>
+        </section>
+    </main>
+
+    <script src="~/js/vehicles.js"></script>
+</body>
+</html>
