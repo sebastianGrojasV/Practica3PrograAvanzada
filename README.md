@@ -55,7 +55,7 @@ dotnet run --project src/SistemaGestorAutomoviles.API
 dotnet run --project src/SistemaGestorAutomoviles.Web
 ```
 
-> La URL base de la API se configura en `src/SistemaGestorAutomoviles.Web/appsettings.json` (`ApiSettings:BaseUrl`).
+> Ajusta `apiBaseUrl` en `wwwroot/js/vehicles.js` según el puerto real de la API.
 
 ## 9) Cómo aplicar migraciones
 1. Instala la herramienta (si no está instalada):
@@ -141,12 +141,3 @@ mkdir src
 - El acceso a datos está aislado en Infrastructure con repositorios + DbContext.
 - La vista usa JavaScript separado para todo el CRUD vía API, evitando lógica pesada en controladores de UI.
 - Resultado: mejor mantenibilidad, pruebas más simples y separación de responsabilidades defendible en exposición.
-
-
-## 16) Solución a errores comunes (404 y "Failed to fetch")
-- **404 en `localhost` al abrir API**: no es necesariamente un error del proyecto. Puede ocurrir si abres la raíz equivocada o un puerto distinto. Usa `http://localhost:5100/swagger` o `https://localhost:7100/swagger`.
-- **"Failed to fetch" en Web**: normalmente significa que la API no está levantada, o que el frontend apunta a otro puerto.
-- Verifica que ambos proyectos estén corriendo con estos puertos (definidos en `launchSettings.json`):
-  - API: `http://localhost:5100` / `https://localhost:7100`
-  - Web: `http://localhost:5200` / `https://localhost:7200`
-- Si cambias puertos, ajusta `ApiSettings:BaseUrl` en Web.

@@ -1,4 +1,4 @@
-const apiBaseUrl = window.appConfig?.apiBaseUrl || "http://localhost:5100/api/vehicles";
+const apiBaseUrl = "https://localhost:7249/api/vehicles";
 
 const vehicleForm = document.getElementById("vehicleForm");
 const tableBody = document.getElementById("vehiclesTableBody");
@@ -36,7 +36,7 @@ vehicleForm.addEventListener("submit", async event => {
         resetForm();
         await loadVehicles();
     } catch (error) {
-        showMessage(resolveErrorMessage(error), "error");
+        showMessage(error.message, "error");
     }
 });
 
@@ -72,7 +72,7 @@ async function loadVehicles() {
             tableBody.appendChild(row);
         });
     } catch (error) {
-        showMessage(resolveErrorMessage(error), "error");
+        showMessage(error.message, "error");
     }
 }
 
@@ -96,7 +96,7 @@ window.showDetail = async function (id) {
             <p><strong>Disponible:</strong> ${vehicle.isAvailable ? "Sí" : "No"}</p>
         `;
     } catch (error) {
-        showMessage(resolveErrorMessage(error), "error");
+        showMessage(error.message, "error");
     }
 };
 
@@ -120,7 +120,7 @@ window.startEdit = async function (id) {
         document.getElementById("isAvailable").value = `${vehicle.isAvailable}`;
         document.getElementById("submitButton").textContent = "Actualizar";
     } catch (error) {
-        showMessage(resolveErrorMessage(error), "error");
+        showMessage(error.message, "error");
     }
 };
 
@@ -141,7 +141,7 @@ window.removeVehicle = async function (id) {
         detailCard.classList.add("hidden");
         await loadVehicles();
     } catch (error) {
-        showMessage(resolveErrorMessage(error), "error");
+        showMessage(error.message, "error");
     }
 };
 
@@ -168,14 +168,6 @@ function resetForm() {
 function showMessage(message, type) {
     messageContainer.textContent = message;
     messageContainer.className = type;
-}
-
-function resolveErrorMessage(error) {
-    if (error instanceof TypeError) {
-        return `No se pudo conectar con la API (${apiBaseUrl}). Verifica que la API esté ejecutándose.`;
-    }
-
-    return error?.message || "Ocurrió un error inesperado.";
 }
 
 async function parseError(response) {

@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("WebPolicy", policy =>
         policy.AllowAnyHeader()
             .AllowAnyMethod()
-            .WithOrigins("http://localhost:5200", "https://localhost:7200"));
+            .WithOrigins("http://localhost:5156", "https://localhost:7156"));
 });
 
 var app = builder.Build();
@@ -31,7 +31,6 @@ app.UseHttpsRedirection();
 app.UseCors("WebPolicy");
 app.UseAuthorization();
 app.MapControllers();
-app.MapGet("/", () => Results.Ok(new { message = "API running. Visit /swagger for documentation." }));
 
 using (var scope = app.Services.CreateScope())
 {
