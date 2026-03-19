@@ -55,8 +55,6 @@ dotnet run --project src/SistemaGestorAutomoviles.API
 dotnet run --project src/SistemaGestorAutomoviles.Web
 ```
 
-> Ajusta `apiBaseUrl` en `wwwroot/js/vehicles.js` según el puerto real de la API.
-
 ## 9) Cómo aplicar migraciones
 1. Instala la herramienta (si no está instalada):
 ```bash
@@ -94,10 +92,13 @@ dotnet ef database update \
 3. Los mensajes de éxito/error se muestran sin recargar toda la página.
 
 ## 12) Integrantes del grupo
-- Integrantes: [Agregar nombres]
+- Integrantes: [Sebastian Rojas
+- Wendy Miranda
+- Bryan Bogantes
+- Brandon Quiros]
 
 ## 13) Enlace del repositorio
-- Repositorio: [Agregar enlace]
+- Repositorio: [https://github.com/sebastianGrojasV/Practica3PrograAvanzada]
 
 ## 14) Comandos CLI para crear toda la solución
 ```bash
